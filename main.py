@@ -15,6 +15,7 @@ board = [
 def draw_chessboard(window, colours, square_width, board_squares):
     i = 0
     for x in range(square_width, square_width*9, square_width):
+        #if - else statement for alternating colours
         if i == 1:
             i = 2
         else:
@@ -42,13 +43,14 @@ def draw_piece(window, x, y, text, text_colour, font):
     text_object.draw(window)
     return text_object
 
-
+'''
 def draw_text(window, x, y, text, text_colour, font):
     text_object = Text(Point(x, y), text)
     text_object.setTextColor(text_colour)
     text_object.draw(window)
     return text_object
-
+'''
+    
 def draw_black(window, square_width, all_pieces):
     square_half = square_width/2
     for x in range(int(square_width + square_half), int((square_width + square_half) * 6), int(square_width)):
@@ -96,7 +98,8 @@ def draw_white(window, square_width, all_pieces):
 def get_piece(square, square_width, all_pieces):
     for piece in all_pieces:
         print(square["topX & topY"][0])
-        if square["topX & topY"][0].getX() < piece.x < square["topX & topY"][0].getX() + square_width and square["topX & topY"][0].getY() < piece.y < square["topX & topY"][0].getY() + square_width:
+        if square["topX & topY"][0].getX() < piece.x < square["topX & topY"][0].getX() + square_width and \
+            square["topX & topY"][0].getY() < piece.y < square["topX & topY"][0].getY() + square_width:
             return piece
 
 
@@ -107,7 +110,8 @@ def selection_mode(window, board_squares, square_width, selected_piece, piece_en
             object = board_squares[i]
             for shape in (object["topX & topY"]):
                 point_1 = shape.getP1()
-                if point_1.getX() < user_click.x < point_1.getX() + square_width and point_1.getY() < user_click.y < point_1.getY() + square_width:
+                if point_1.getX() < user_click.x < point_1.getX() + square_width and \
+                    point_1.getY() < user_click.y < point_1.getY() + square_width:
                     if object not in selected_piece and len(selected_piece) < 1:
                         shape.setWidth(3)
                         shape.setOutline("blue")
@@ -131,7 +135,8 @@ def selection_mode(window, board_squares, square_width, selected_piece, piece_en
             object = board_squares[i]
             for shape in (object["topX & topY"]):
                 point_1 = shape.getP1()
-                if point_1.getX() < user_click_2.x < point_1.getX() + square_width and point_1.getY() < user_click_2.y < point_1.getY() + square_width:
+                if point_1.getX() < user_click_2.x < point_1.getX() + square_width and \
+                    point_1.getY() < user_click_2.y < point_1.getY() + square_width:
                     if object not in selected_piece and len(piece_endpoint) < 1:
                         shape.setWidth(3)
                         shape.setOutline("red")
